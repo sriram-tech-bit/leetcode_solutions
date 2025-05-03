@@ -1,0 +1,32 @@
+1.Merge Two Arrays  and Sorted in Increasing Order and Find Median.
+
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size) {
+    int result[nums1Size+nums2Size];
+          for(int i=0;i<nums1Size;i++){
+              result[i]=nums1[i];
+          }
+          int x=nums1Size;
+        for(int i=0;i<nums2Size;i++){
+              result[x]=nums2[i];
+              x++;
+          }
+        for(int i=0;i<nums1Size+nums2Size-1;i++){
+        for(int j=0;j<nums1Size+nums2Size-1-i;j++){
+            if(result[j]>result[j+1]){
+                int temp=result[j];
+                result[j]=result[j+1];
+                result[j+1]=temp;
+            }
+        }
+    }  
+    if((nums1Size+nums2Size)%2!=0){
+        int k=result[(nums1Size+nums2Size)/2];
+        return k;
+    }
+
+        float s=result[(nums1Size+nums2Size)/2]+result[(nums2Size+nums1Size)/2-1];
+        return s/2;
+     
+       
+   
+}
